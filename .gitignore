@@ -2,3 +2,4 @@
 .idea
 .vertx
 build
+vertx-ha-demo.iml

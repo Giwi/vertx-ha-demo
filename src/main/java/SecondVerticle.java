@@ -14,7 +14,7 @@ public class SecondVerticle extends AbstractVerticle {
      *
      * @param args the input arguments
      */
-    public static void main(String[] args) {
+    public static void main(String... args) {
         Vertx.clusteredVertx(new VertxOptions().setHAEnabled(true), vertx ->
                 vertx.result().deployVerticle(SecondVerticle.class.getName(), new DeploymentOptions().setHa(true))
         );

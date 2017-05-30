@@ -16,7 +16,7 @@ public class HaVerticle extends AbstractVerticle {
      *
      * @param args the input arguments
      */
-    public static void main(String[] args) {
+    public static void main(String... args) {
         Vertx.clusteredVertx(new VertxOptions().setHAEnabled(true), vertx ->
                 vertx.result().deployVerticle(HaVerticle.class.getName(), new DeploymentOptions().setHa(true))
         );
@@ -26,7 +26,8 @@ public class HaVerticle extends AbstractVerticle {
     @Override
     public void start() throws Exception {
         vertx.createHttpServer().requestHandler(req ->
-                req.response().end("Request served by " + ManagementFactory.getRuntimeMXBean().getName() + "\n")
+                req.response().end("Request served by " +
+                        ManagementFactory.getRuntimeMXBean().getName() + "\n")
         ).listen(8080);
     }
 }
